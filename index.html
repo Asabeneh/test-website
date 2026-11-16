@@ -1,6 +1,4 @@
-from pathlib import Path
-
-html = r'''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -21,6 +19,98 @@ html = r'''<!DOCTYPE html>
 @media(max-width:900px){.nav{display:none}.hero{grid-template-columns:1fr}.hero-art{min-height:290px}.dashboard{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.tool-grid{grid-template-columns:1fr 1fr}.glossary{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.shell{padding:0 18px}.topbar{height:65px}.status{display:none}.hero{padding:48px 0 35px}h1{letter-spacing:-2px}.hero-art{min-height:250px}.stats,.tool-grid,.two-col{grid-template-columns:1fr}.section{padding:34px 0}.section-head{align-items:start;flex-direction:column}.stat strong{font-size:24px}.footer{flex-direction:column}.field-row{grid-template-columns:1fr}.glossary{grid-template-columns:1fr 1fr}}
 </style>
+
+<style id="readability-upgrade">
+:root{
+  --bg:#0b100d;--panel:#151d17;--panel2:#202c22;--line:#3b4a3d;
+  --muted:#c0cbbf;--text:#fbfff7;--lime:#d7ff78;--green:#8df0ae;
+  --red:#ff938b;--yellow:#ffda83;
+}
+body{font-size:16px;line-height:1.65;color:var(--text)}
+.shell{max-width:1480px;padding-left:clamp(20px,3.2vw,48px);padding-right:clamp(20px,3.2vw,48px)}
+.topbar{height:82px}
+.brand{font-size:23px}
+.brand small{font-size:11px}
+.nav{gap:30px;font-size:15px;font-weight:600}
+.status{font-size:12px}
+.button{font-size:14px;padding:12px 17px;font-weight:600}
+.ticker-item{font-size:13px;min-width:190px}
+.ticker-item strong{font-size:15px}
+.hero{padding:82px 0 60px;gap:54px}
+.eyebrow,.kicker,.art-tag{font-size:13px;letter-spacing:1.8px;font-weight:600}
+h1{font-size:clamp(52px,6.6vw,88px);line-height:1.02;letter-spacing:-3.6px}
+.hero p{font-size:18px;line-height:1.8;color:#d0d9ce}
+.hero-note,.art-caption{font-size:13px}
+.hero-art{min-height:355px}
+.section{padding:58px 0}
+.section h2{font-size:36px;letter-spacing:-1.2px}
+.sub{font-size:14px;color:#c0cbbf}
+.section-head{margin-bottom:28px}
+.stat,.card{padding:24px}
+.stat label{font-size:12px;color:#c0cbbf}
+.stat strong{font-size:32px}
+.stat small{font-size:13px}
+.card-title h3{font-size:18px}
+.pill{font-size:11px;color:#d1dccf;border-color:#526253}
+.chart-controls button{font-size:12px;padding:7px 10px}
+.chart-meta{font-size:12px}
+.watchlist{font-size:14px}
+.watchlist th{font-size:12px;color:#c0cbbf}
+.watchlist td{padding:15px 5px}
+.company{font-size:12px;color:#c0cbbf}
+.change{font-size:13px;font-weight:600}
+.risk-note{font-size:12px;line-height:1.6;color:#c0cbbf}
+.tool-card{padding:25px}
+.tool-card h3{font-size:19px}
+.tool-card p{font-size:15px;line-height:1.75;color:#d0d9ce}
+.tool-icon{width:42px;height:42px;font-size:21px}
+.field label{font-size:12px;color:#d0d9ce;font-weight:600}
+.field input,.field select{font-size:16px;padding:13px}
+.result{padding:18px}
+.result span{font-size:12px;color:#d0e4c5}
+.result strong{font-size:30px}
+.result p{font-size:13px;color:#d0e4c5;line-height:1.55}
+.lesson{padding:16px;gap:15px}
+.lesson strong{font-size:15px}
+.lesson small{font-size:13px;color:#c0cbbf;line-height:1.5}
+.lesson-num{font-size:14px}
+.glossary{gap:12px}
+.term{padding:17px}
+.term b{font-size:15px}
+.term p{font-size:13px;line-height:1.6;color:#c0cbbf}
+.journal{font-size:14px}
+.journal th{font-size:12px;color:#c0cbbf}
+.journal th,.journal td{padding:13px 9px}
+.journal input,.journal select{font-size:14px;padding:10px}
+.footer{font-size:13px;line-height:1.7}
+.footer strong{font-size:14px}
+.disclaimer{color:#c0cbbf}
+#checkProgress{font-size:13px;color:#c0cbbf}
+@media(max-width:900px){
+ .hero{padding:60px 0 45px}
+ .hero p{font-size:17px}
+ .section{padding:46px 0}
+ .section h2{font-size:32px}
+ .nav{font-size:14px}
+}
+@media(max-width:560px){
+ body{font-size:16px}
+ .topbar{height:70px}
+ .brand{font-size:21px}
+ .hero{padding:48px 0 36px}
+ h1{font-size:clamp(46px,13vw,64px);letter-spacing:-2px}
+ .hero p{font-size:16px}
+ .section{padding:38px 0}
+ .section h2{font-size:29px}
+ .stat strong{font-size:28px}
+ .tool-card p{font-size:14px}
+ .glossary{grid-template-columns:1fr 1fr}
+ .term{padding:14px}
+ .term b{font-size:14px}
+ .term p{font-size:12px}
+}
+</style>
+
 </head>
 <body>
 <div class="shell">
@@ -150,7 +240,4 @@ document.getElementById('addTrade').addEventListener('click',()=>{const row=docu
 document.getElementById('journalTable').addEventListener('click',e=>{if(e.target.classList.contains('remove')){e.target.closest('tr').remove();notify('Journal row removed')}})
 </script>
 </body>
-</html>'''
-path = Path("/mnt/data/trade-craft.html")
-path.write_text(html, encoding="utf-8")
-print(f"Created {path} ({path.stat().st_size:,} bytes)")
+</html>
